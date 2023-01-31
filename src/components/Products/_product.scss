@@ -1,0 +1,75 @@
+@use '../../styles/sass/config/variables' as var;
+@use '../../styles/sass/mixins/spacing' as space;
+@use '../../styles/sass/mixins/responsive' as res;
+
+section.products {
+  max-width: var.$desktop;
+  margin: auto;
+  align-items: center;
+  text-align: center;
+  @include space.py(var.$space_10);
+  @include res.tablet {
+    @include space.py(var.$space_16);
+  }
+  > .subtitle {
+    color: #cbcbcb;
+    font-family: var.$secondary-font;
+    font-size: small;
+    margin-bottom: var.$space_2;
+    font-weight: 700;
+    @include res.tablet {
+      font-size: larger;
+    }
+  }
+  > h2 {
+    font-weight: 700;
+    margin-bottom: var.$space_20;
+    @include res.tablet {
+      margin-bottom: var.$space_32;
+    }
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: var.$space_10;
+    justify-content: center;
+    align-items: center;
+    @include res.tablet {
+      flex-direction: row;
+      gap: var.$space_24;
+      align-items: baseline;
+    }
+    .card {
+      // margin: auto;
+      width: 90%;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: var.$space_5;
+      @include res.tablet {
+        gap: unset;
+      }
+      img {
+        display: block;
+        align-self: center;
+        max-width: 100%;
+        width: 90px;
+        @include res.tablet {
+          width: 120px;
+        }
+      }
+      .title {
+        font-weight: 700;
+        @include res.tablet {
+          font-size: larger;
+          margin-top: var.$space_8;
+        }
+      }
+      .description {
+        font-family: var.$secondary-font;
+        font-size: smaller;
+        color: #545454;
+      }
+    }
+  }
+}

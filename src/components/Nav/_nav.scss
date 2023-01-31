@@ -1,0 +1,98 @@
+@use '../../styles/sass/config/variables' as var;
+@use '../../styles/sass/mixins/spacing' as space;
+@use '../../styles/sass/mixins/responsive' as res;
+
+nav {
+  max-width: var.$desktop;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+  border-bottom: 1px solid #6464644d;
+  @include space.px(var.$space_2);
+  @include res.tablet {
+    position: relative;
+    border-bottom: unset;
+    @include space.px(var.$space_20);
+  }
+  a {
+    img {
+      max-width: 100%;
+      display: block;
+      width: 60%;
+      @include res.tablet {
+        width: 100%;
+      }
+    }
+  }
+  .navButton {
+    z-index: 11;
+    svg {
+      font-size: 40px;
+      color: var.$secondary-color;
+      cursor: pointer;
+    }
+    @include res.tablet {
+      display: none;
+    }
+  }
+  .links {
+    transition: var.$transition;
+    transform: translateX(0);
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    background-color: #fff;
+    text-align: right;
+    border-left: 1px solid var.$white;
+    padding: var.$space_10 var.$space_3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include space.py(var.$space_14);
+    @include res.tablet {
+      border-left: unset;
+      position: relative;
+      flex-direction: row;
+      top: 0 !important;
+      gap: var.$space_10;
+    }
+    &.hide {
+      transform: translateX(100%);
+      @include res.tablet {
+        transform: translateX(0);
+      }
+    }
+
+    .book {
+      background-color: var.$primary-color;
+      color: #fff;
+      padding: var.$space_2 var.$space_5;
+      text-transform: uppercase;
+      width: fit-content;
+      display: inline-block;
+      align-self: flex-end;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var.$space_2;
+      @include res.tablet {
+        flex-direction: row;
+        gap: var.$space_10;
+      }
+      a {
+        font-size: 20px;
+        .arrowdown {
+          font-size: large;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

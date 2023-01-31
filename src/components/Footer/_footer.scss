@@ -1,0 +1,62 @@
+@use '../../styles/sass/config/variables' as var;
+@use '../../styles/sass/mixins/spacing' as space;
+@use '../../styles/sass/mixins/responsive' as res;
+
+footer {
+  margin: auto;
+  max-width: var.$desktop;
+  margin-top: var.$space_5;
+  padding: var.$space_5;
+  @include space.py(var.$space_14);
+  .socials {
+    ul {
+      display: flex;
+      justify-content: center;
+      gap: var.$space_4;
+      @include res.tablet {
+        gap: var.$space_14;
+      }
+      li {
+        a {
+          svg {
+            color: var.$secondary-color;
+            font-size: 30px;
+            @include res.tablet {
+              font-size: 35px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .links {
+    display: flex;
+    margin-top: var.$space_5;
+    flex-direction: column;
+    gap: var.$space_5;
+    justify-content: center;
+    @include res.tablet {
+      flex-direction: row;
+      align-items: center;
+      gap: var.$space_14;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      width: 150px;
+      @include res.tablet {
+        width: 200px;
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var.$space_1;
+      @include res.tablet {
+        flex-direction: row;
+        gap: var.$space_5;
+      }
+    }
+  }
+}

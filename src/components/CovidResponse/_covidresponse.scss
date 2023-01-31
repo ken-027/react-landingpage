@@ -1,0 +1,31 @@
+@use '../../styles/sass/config/variables' as var;
+@use '../../styles/sass/mixins/spacing' as space;
+@use '../../styles/sass/mixins/responsive' as res;
+
+.response {
+  background-color: var.$secondary-light-color;
+  padding: var.$space_2;
+  text-align: center;
+  @include res.tablet {
+    display: flex;
+    justify-content: center;
+    gap: var.$space_1;
+  }
+  p {
+    line-height: 1.2;
+    font-size: smaller;
+    color: var.$secondary-color;
+    font-family: var.$primary-font;
+    font-weight: 400;
+    &.bold {
+      font-weight: 500;
+    }
+
+    svg {
+      vertical-align: middle;
+      &.goto {
+        cursor: pointer;
+      }
+    }
+  }
+}

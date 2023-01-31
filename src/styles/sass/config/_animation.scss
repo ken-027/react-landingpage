@@ -1,0 +1,27 @@
+@use './variables' as var;
+
+@keyframes pulsing {
+  0% {
+    background-color: var.$bg-pulsing;
+  }
+
+  50% {
+    background-color: #fff;
+  }
+
+  100% {
+    background-color: var.$bg-pulsing;
+  }
+}
+@keyframes swipedown {
+  0% {
+    transform: translateY(-3%);
+  }
+
+  50% {
+    transform: translateY(2%);
+  }
+  100% {
+    transform: translateY(-3%);
+  }
+}
