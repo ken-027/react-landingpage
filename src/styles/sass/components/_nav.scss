@@ -58,7 +58,6 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
 
     @include space.py(var.$space_14);
     @include res.laptop {
@@ -67,6 +66,7 @@ nav {
       flex-direction: row;
       top: 0 !important;
       left: 0;
+      align-items: center;
       gap: var.$space_10;
     }
 

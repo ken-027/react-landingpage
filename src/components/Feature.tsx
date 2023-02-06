@@ -1,3 +1,4 @@
+// import { useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { motion } from 'framer-motion'
 import { Navigation, Autoplay } from 'swiper'
@@ -34,6 +35,7 @@ const list: {
 ]
 
 const Feature = (): JSX.Element => {
+  // const [isInView, setisInView] = useState<boolean>(false)
   return (
     <motion.section
       viewport={{ once: true }}
@@ -41,6 +43,8 @@ const Feature = (): JSX.Element => {
         translateY: '5vh',
         zIndex: -2,
       }}
+      // onViewportEnter={() => setisInView(true)}
+      // onViewportLeave={() => setisInView(false)}
       whileInView={{
         translateY: 0,
         zIndex: 0,
@@ -55,7 +59,7 @@ const Feature = (): JSX.Element => {
         spaceBetween={50}
         allowTouchMove={false}
         autoplay={{
-          delay: 3000,
+          delay: 6000,
           disableOnInteraction: false,
         }}
         modules={[Navigation, Autoplay]}
