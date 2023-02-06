@@ -2,15 +2,13 @@
 
 @keyframes pulsing {
   0% {
-    background-color: var.$bg-pulsing;
+    opacity: 0%;
   }
-
   50% {
-    background-color: #fff;
+    opacity: 100%;
   }
-
   100% {
-    background-color: var.$bg-pulsing;
+    opacity: 0%;
   }
 }
 @keyframes swipedown {

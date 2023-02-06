@@ -1,0 +1,133 @@
+@use '../config/variables' as var;
+@use '../mixins/spacing' as space;
+@use '../mixins/responsive' as res;
+
+nav {
+  max-width: var.$desktop;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+  border-bottom: 1px solid #6464644d;
+  @include space.px(var.$space_2);
+  @include res.laptop {
+    position: relative;
+    border-bottom: unset;
+    @include space.px(var.$space_20);
+  }
+  a.logolink {
+    // z-index: 11;
+    display: block;
+    width: 40%;
+    max-width: 200px;
+    img {
+      max-width: 100%;
+      display: block;
+      @include res.laptop {
+        width: 100%;
+      }
+    }
+  }
+  .navButton {
+    z-index: 11;
+    svg {
+      font-size: 40px;
+      color: var.$secondary-color;
+      cursor: pointer;
+    }
+    @include res.laptop {
+      display: none;
+    }
+  }
+
+  .links {
+    transition: var.$transition;
+    transform: translateX(0);
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    left: 40%;
+    background-color: #fff;
+    text-align: right;
+    border-left: 1px solid var.$white;
+    padding: var.$space_10 var.$space_3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @include space.py(var.$space_14);
+    @include res.laptop {
+      border-left: unset;
+      position: relative;
+      flex-direction: row;
+      top: 0 !important;
+      left: 0;
+      gap: var.$space_10;
+    }
+
+    &:not(.hide) {
+      // &::before {
+      .backdrop {
+        position: absolute;
+        // transition-delay: 1s;
+        inset: 0;
+        right: 100%;
+        left: -120%;
+        background-color: var.$secondary-light-color;
+        // opacity: 15%;
+        transition: var.$transition;
+        transition-duration: 1s;
+        z-index: -1;
+
+        @include res.laptop {
+          display: none;
+        }
+      }
+    }
+
+    &.hide {
+      transform: translateX(100%);
+      @include res.laptop {
+        transform: translateX(0);
+      }
+    }
+
+    .book {
+      background-color: var.$primary-color;
+      color: #fff;
+      padding: var.$space_2 var.$space_10;
+      text-transform: uppercase;
+      width: fit-content;
+      display: inline-block;
+      align-self: flex-end;
+      min-width: fit-content;
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: var.$space_2;
+      @include res.laptop {
+        flex-direction: row;
+        gap: var.$space_10;
+      }
+      a {
+        font-size: 20px;
+        @include res.tablet {
+          font-size: smaller;
+        }
+        @include res.laptop {
+          font-size: 22px;
+        }
+        .arrowdown {
+          font-size: large;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

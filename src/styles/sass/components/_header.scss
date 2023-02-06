@@ -1,0 +1,125 @@
+@use '../config/variables' as var;
+@use '../mixins/spacing' as space;
+@use '../config/animation' as anim;
+@use '../mixins/responsive' as res;
+
+header {
+  // max-width: var.$desktop;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  // padding-bottom: var.$space_20;
+  .content {
+    // @include space.py(var.$space_10);
+    display: flex;
+    flex-direction: column;
+    gap: var.$space_8;
+    max-width: var.$desktop;
+    padding-bottom: 0;
+    @include res.laptop {
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      // @include space.px(var.$space_20);
+    }
+    .description {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var.$space_5;
+      @include res.laptop {
+        width: 40%;
+        text-align: left;
+        align-items: flex-start;
+        font-size: larger;
+      }
+      h1 {
+        font-weight: 800;
+        @include res.laptop {
+          line-height: 1.2;
+        }
+      }
+      p {
+        font-family: var.$secondary-font;
+        line-height: 1.5;
+        font-size: larger;
+      }
+      .goto {
+        background-color: var.$secondary-color;
+        color: #fff;
+        padding: var.$space_2 var.$space_10;
+        width: fit-content;
+        text-transform: uppercase;
+        @include res.laptop {
+          min-width: 250px;
+          text-align: center;
+        }
+      }
+    }
+
+    .image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      padding: var.$space_2;
+      position: relative;
+      @include res.laptop {
+        width: 50%;
+      }
+
+      &::after {
+        // animation: pulsing 1.5s ease-in infinite;
+        display: block;
+        background: radial-gradient(circle, #ffce41 25%, #fff 70%);
+        content: '';
+        position: absolute;
+        left: 5%;
+        right: -7%;
+        top: -7%;
+        bottom: -2%;
+        z-index: -2;
+      }
+
+      &::before {
+        animation: pulsing 1.4s ease-in infinite;
+        display: block;
+        background: radial-gradient(circle, #ffce41 50%, #ffffff00 62%);
+        content: '';
+        position: absolute;
+        left: 5%;
+        right: -7%;
+        top: -7%;
+        bottom: -2%;
+        z-index: -1;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+    }
+  }
+  .gotoproducts {
+    background-color: var.$primary-color;
+    color: #fff;
+    aspect-ratio: 1/1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    svg {
+      font-size: 50px;
+      animation: swipedown 800ms linear infinite;
+      @include res.laptop {
+        font-size: 70px;
+      }
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+}

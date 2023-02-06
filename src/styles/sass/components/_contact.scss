@@ -1,0 +1,71 @@
+@use '../config/variables' as var;
+@use '../mixins/spacing' as space;
+@use '../mixins/responsive' as res;
+
+section.contact {
+  position: relative;
+  // max-width: var.$desktop;
+  // @include space.py(var.$space_10);
+  background-color: var.$secondary-color;
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  padding: var.$space_10 var.$space_8;
+  padding-bottom: 0;
+
+  @include res.laptop {
+    border-radius: var.$space_6;
+    margin: auto;
+    min-height: 400px;
+  }
+  .cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var.$space_5;
+    margin: auto;
+    @include res.laptop {
+      width: 60%;
+    }
+    p {
+      font-family: var.$secondary-font;
+      font-weight: 400;
+      font-size: smaller;
+      @include res.tablet {
+        font-size: larger;
+      }
+    }
+    .letstalk {
+      background-color: #fff;
+      display: inline-block;
+      color: var.$secondary-color;
+      padding: var.$space_2 var.$space_6;
+      font-weight: 600;
+      min-width: 200px;
+      width: fit-content;
+    }
+  }
+  .images {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: var.$space_5;
+    margin-top: var.$space_4;
+    z-index: -1;
+    @include res.laptop {
+      justify-content: space-between;
+      position: absolute;
+      inset: 0;
+      @include space.px(var.$space_16);
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      width: 30%;
+      align-items: center;
+      @include res.laptop {
+        width: 200px;
+      }
+    }
+  }
+}

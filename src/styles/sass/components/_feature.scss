@@ -1,0 +1,146 @@
+@use '../config/variables' as var;
+@use '../mixins/spacing' as space;
+@use '../mixins/responsive' as res;
+
+section.feature {
+  padding: 0;
+  color: #fff;
+  background-color: var.$secondary-color;
+  @include res.laptop {
+    // border-radius: var.$space_6;
+    margin: auto;
+    // min-height: 400px;
+  }
+  .list {
+    @include res.laptop {
+      // height: max(200px);
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      transition: var.$transition;
+      transition-duration: 600ms;
+      top: 75%;
+      color: #fff;
+      @include res.laptop {
+        top: 50%;
+      }
+      &::after {
+        font-size: 13px;
+        display: grid;
+        place-items: center;
+        min-height: 30px;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+        font-weight: bold;
+        background-color: #ffffff55;
+        @include res.laptop {
+          font-size: 20px;
+          min-height: 40px;
+        }
+      }
+    }
+    .swiper-button-prev {
+      @include res.laptop {
+        left: var.$space_6;
+      }
+    }
+    .swiper-button-next {
+      @include res.laptop {
+        right: var.$space_6;
+      }
+    }
+    .swiper-button-disabled {
+      opacity: 0%;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      min-height: 380px;
+      justify-content: space-between;
+      @include res.laptop {
+        flex-direction: row;
+        min-height: 500px;
+        // align-items: stretch;
+      }
+      .wrapper {
+        padding-top: var.$space_10;
+        display: flex;
+        flex-direction: column;
+        gap: var.$space_3;
+        @include res.laptop {
+          padding-inline: var.$space_16;
+          padding-block: var.$space_18;
+          align-items: start;
+          width: 40%;
+          gap: var.$space_10;
+        }
+        > h2 {
+          @include res.laptop {
+            // width: max(90%);
+            text-align: left;
+          }
+        }
+        .description {
+          @include space.px(var.$space_8);
+          text-align: center;
+          // min-height: 200px;
+
+          @include res.laptop {
+            text-align: left;
+            display: flex;
+            gap: var.$space_5;
+            align-items: flex-start;
+            width: min(450px);
+            padding-inline: 0;
+          }
+
+          .describe {
+            .title {
+              font-weight: 600;
+              @include res.laptop {
+                font-size: x-large;
+                line-height: 1.4;
+              }
+            }
+            .text {
+              font-size: smaller;
+              font-weight: 300;
+              font-family: var.$secondary-font;
+              @include res.laptop {
+                font-size: larger;
+              }
+            }
+          }
+        }
+      }
+      .image {
+        position: relative;
+        margin-top: auto;
+        z-index: -1;
+        // width: 320px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        // height: 200px;
+        width: 100%;
+        @include res.laptop {
+          margin-top: unset;
+          justify-content: flex-start;
+        }
+        img {
+          position: relative;
+          // background-position: center;
+          bottom: -28px;
+          // max-height: 100%;
+          // bottom: -35px;
+          max-width: 300px;
+          width: 100%;
+          @include res.laptop {
+            max-width: 900px;
+            bottom: -70px;
+          }
+        }
+      }
+    }
+  }
+}

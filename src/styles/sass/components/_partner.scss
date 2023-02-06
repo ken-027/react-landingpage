@@ -1,0 +1,61 @@
+@use '../config/variables' as var;
+@use '../mixins/spacing' as space;
+@use '../mixins/responsive' as res;
+
+section.partners {
+  // @include space.py(var.$space_10);
+  // margin-bottom: var.$space_5;1
+  text-align: center;
+  // min-height: 400px;
+  // @include res.tablet {
+  //   @include space.py(var.$space_28);
+  //   margin-bottom: var.$space_24;
+  // }
+  > .subtitle {
+    color: #cbcbcb;
+    font-family: var.$secondary-font;
+    font-size: small;
+    margin-bottom: var.$space_2;
+    font-weight: 700;
+    @include res.tablet {
+      font-size: larger;
+    }
+  }
+  > h2 {
+    font-weight: 700;
+    margin-bottom: var.$space_12;
+    @include res.tablet {
+      margin-bottom: var.$space_24;
+    }
+  }
+
+  .images {
+    display: flex;
+    // margin-top: var.$space_12;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var.$space_10;
+
+    @include res.tablet {
+      gap: var.$space_20;
+    }
+    img {
+      width: 80px;
+      aspect-ratio: 1/1;
+      object-fit: contain;
+      mix-blend-mode: color-burn;
+      filter: gray; /* IE6-9 */
+      -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+      filter: grayscale(1);
+      transition: var.$transition;
+
+      @include res.tablet {
+        width: 100px;
+      }
+      &:hover {
+        filter: unset;
+      }
+    }
+  }
+}

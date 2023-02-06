@@ -1,0 +1,88 @@
+@use '../config/variables' as var;
+@use '../mixins/spacing' as space;
+@use '../mixins/responsive' as res;
+
+section.about {
+  position: relative;
+  // max-width: var.$desktop;
+  background-color: #fff;
+  // @include space.py(var.$space_10);
+  > h2 {
+    font-weight: 700;
+    margin-bottom: var.$space_12;
+    @include res.laptop {
+      margin-bottom: var.$space_24;
+    }
+  }
+  .list {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var.$space_10;
+    @include res.laptop {
+      justify-content: center;
+      align-items: center;
+    }
+    .item {
+      display: flex;
+      flex-direction: column;
+      gap: var.$space_5;
+      @include res.laptop {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .image {
+        max-width: 300px;
+        margin: auto;
+        @include res.laptop {
+          max-width: unset;
+        }
+        img {
+          display: block;
+          max-width: 100%;
+          margin-left: 3%;
+        }
+      }
+      .description {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: var.$space_1;
+        @include res.laptop {
+          text-align: left;
+          width: 40%;
+        }
+        h2 {
+          font-weight: bold;
+          margin-bottom: var.$space_2;
+          @include res.laptop {
+            text-align: left;
+          }
+        }
+        p {
+          font-family: var.$secondary-font;
+          @include res.laptop {
+            font-size: larger;
+          }
+        }
+        a {
+          color: var.$secondary-color;
+          font-weight: 600;
+          font-size: smaller;
+          @include res.laptop {
+            font-size: large;
+          }
+        }
+      }
+      &:nth-child(even) {
+        .image {
+          @include res.laptop {
+            order: 2;
+          }
+        }
+      }
+    }
+  }
+}
